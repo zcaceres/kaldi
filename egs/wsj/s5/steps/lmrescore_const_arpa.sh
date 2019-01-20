@@ -7,7 +7,7 @@
 
 # Begin configuration section.
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 stage=1
 scoring_opts=
 # End configuration section.

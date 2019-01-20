@@ -42,7 +42,7 @@ silence_weight=0.01
 cmd=run.pl
 si_dir=
 fmllr_update_type=full
-skip_scoring=false
+skip_scoring=true
 # End configuration section
 
 echo "$0 $@"  # Print the command line for logging

@@ -4,7 +4,7 @@
 #           2017  Vimal Manohar
 # Apache 2.0
 
-# This script is similar to steps/cleanup/decode_segmentation.sh, but 
+# This script is similar to steps/cleanup/decode_segmentation.sh, but
 # does decoding using nnet3 model.
 
 set -e
@@ -22,12 +22,12 @@ frames_per_chunk=50
 max_active=7000
 min_active=200
 ivector_scale=1.0
-lattice_beam=8.0  # Beam we use in lattice generation. We can reduce this if 
+lattice_beam=8.0  # Beam we use in lattice generation. We can reduce this if
                   # we only need the best path
 iter=final
 num_threads=1 # if >1, will use gmm-latgen-faster-parallel
 scoring_opts=
-skip_scoring=false
+skip_scoring=true
 allow_partial=true
 extra_left_context=0
 extra_right_context=0

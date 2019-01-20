@@ -13,7 +13,7 @@
 
 # Mechanism: create an unweighted acceptor (on words) for each utterance,
 # compose that with G, determinize, and then use compile-train-graphs-fsts
-# to compile a graph for each utterance, to decode with.  
+# to compile a graph for each utterance, to decode with.
 
 # Begin configuration.
 cmd=run.pl
@@ -23,7 +23,7 @@ lattice_beam=7.0
 acwt=0.083333
 batch_size=75 # Limits memory blowup in compile-train-graphs-fsts
 scale_opts="--transition-scale=1.0 --self-loop-scale=0.1"
-skip_scoring=false
+skip_scoring=true
 # End configuration.
 
 echo "$0 $@"  # Print the command line for logging

@@ -14,10 +14,10 @@
 
 # Begin configuration section.
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 max_ngram_order=4 # Approximate the lattice-rescoring by limiting the max-ngram-order
                   # if it's set, it merges histories in the lattice if they share
-                  # the same ngram history and this prevents the lattice from 
+                  # the same ngram history and this prevents the lattice from
                   # exploding exponentially. Details of the n-gram approximation
                   # method are described in section 2.3 of the paper
                   # http://www.danielpovey.com/files/2018_icassp_lattice_pruning.pdf

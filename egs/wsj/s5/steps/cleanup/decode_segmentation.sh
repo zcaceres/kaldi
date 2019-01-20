@@ -27,7 +27,7 @@ scoring_opts=
 allow_partial=true
 # note: there are no more min-lmwt and max-lmwt options, instead use
 # e.g. --scoring-opts "--min-lmwt 1 --max-lmwt 20"
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging

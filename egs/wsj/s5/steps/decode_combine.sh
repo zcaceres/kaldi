@@ -10,7 +10,7 @@
 # Begin configuration section.
 weight1=0.5 # Weight on 1st set of lattices.
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging

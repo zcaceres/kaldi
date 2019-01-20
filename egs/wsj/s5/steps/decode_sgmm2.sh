@@ -32,7 +32,7 @@ fmllr_iters=10
 fmllr_min_count=1000
 num_threads=1 # if >1, will use gmm-latgen-faster-parallel
 parallel_opts=  # ignored now.
-skip_scoring=false
+skip_scoring=true
 scoring_opts=
 # note: there are no more min-lmwt and max-lmwt options, instead use
 # e.g. --scoring-opts "--min-lmwt 1 --max-lmwt 20"

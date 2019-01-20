@@ -5,7 +5,7 @@
 # Decoding of fMMI or fMPE models (feature-space discriminative training).
 # If transform-dir supplied, expects e.g. fMLLR transforms in that dir.
 
-# Begin configuration section.  
+# Begin configuration section.
 stage=1
 iter=final
 nj=4
@@ -19,7 +19,7 @@ transform_dir=
 num_threads=1 # if >1, will use gmm-latgen-faster-parallel
 parallel_opts=  # ignored now.
 scoring_opts=
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging
@@ -60,7 +60,7 @@ splice_opts=`cat $srcdir/splice_opts 2>/dev/null`
 cmvn_opts=`cat $srcdir/cmvn_opts 2>/dev/null`
 delta_opts=`cat $srcdir/delta_opts 2>/dev/null`
 thread_string=
-[ $num_threads -gt 1 ] && thread_string="-parallel --num-threads=$num_threads" 
+[ $num_threads -gt 1 ] && thread_string="-parallel --num-threads=$num_threads"
 
 mkdir -p $dir/log
 [[ -d $sdata && $data/feats.scp -ot $sdata ]] || split_data.sh $data $nj || exit 1;
@@ -89,7 +89,7 @@ if [ ! -z "$transform_dir" ]; then # add transforms to features...
   feats="$feats transform-feats --utt2spk=ark:$sdata/JOB/utt2spk ark:$transform_dir/trans.JOB ark:- ark:- |"
 fi
 
-fmpefeats="$feats fmpe-apply-transform $srcdir/$iter.fmpe ark:- 'ark,s,cs:gunzip -c $dir/gselect.JOB.gz|' ark:- |" 
+fmpefeats="$feats fmpe-apply-transform $srcdir/$iter.fmpe ark:- 'ark,s,cs:gunzip -c $dir/gselect.JOB.gz|' ark:- |"
 
 if [ $stage -le 1 ]; then
   # Get Gaussian selection info.
@@ -97,7 +97,7 @@ if [ $stage -le 1 ]; then
     gmm-gselect --n=$ngselect $srcdir/$iter.fmpe "$feats" \
     "ark:|gzip -c >$dir/gselect.JOB.gz" || exit 1;
 fi
-  
+
 if [ $stage -le 2 ]; then
   $cmd --num-threads $num_threads JOB=1:$nj $dir/log/decode.JOB.log \
     gmm-latgen-faster$thread_string --max-active=$maxactive --beam=$beam --lattice-beam=$lattice_beam \
@@ -109,8 +109,8 @@ if [ $stage -le 3 ]; then
   if ! $skip_scoring ; then
     [ ! -x local/score.sh ] && \
       echo "Not scoring because local/score.sh does not exist or not executable." && exit 1;
-    
-    local/score.sh --cmd "$cmd" $scoring_opts $data $graphdir $dir || 
+
+    local/score.sh --cmd "$cmd" $scoring_opts $data $graphdir $dir ||
       { echo "$0: Scoring failed. (ignore by '--skip-scoring true')"; exit 1; }
   fi
 fi

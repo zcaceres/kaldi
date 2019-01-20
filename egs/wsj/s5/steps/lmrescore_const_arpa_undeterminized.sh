@@ -4,12 +4,12 @@
 #           2017  Vimal Manohar
 # Apache 2.0
 
-# This script rescores non-compact, (possibly) undeterminized lattices with the 
+# This script rescores non-compact, (possibly) undeterminized lattices with the
 # ConstArpaLm format language model.
-# This is similar to steps/lmrescore_const_arpa.sh, but expects 
+# This is similar to steps/lmrescore_const_arpa.sh, but expects
 # non-compact lattices as input.
-# This works by first determinizing the lattice and rescoring it with 
-# const ARPA LM, followed by composing it with the original lattice to add the 
+# This works by first determinizing the lattice and rescoring it with
+# const ARPA LM, followed by composing it with the original lattice to add the
 # new LM scores.
 
 # If you use the option "--write compact false" it outputs non-compact lattices;
@@ -21,7 +21,7 @@
 
 # Begin configuration section.
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 stage=1
 scoring_opts=
 write_compact=true   # If set to false, writes lattice in non-compact format.
@@ -38,13 +38,13 @@ echo "$0 $@"  # Print the command line for logging
 
 if [ $# != 5 ]; then
   cat <<EOF
-   Does language model rescoring of non-compact undeterminized lattices 
-   (remove old LM, add new LM). This script expects the input lattices 
+   Does language model rescoring of non-compact undeterminized lattices
+   (remove old LM, add new LM). This script expects the input lattices
    to be in non-compact format.
    Usage: $0 [options] <old-lang-dir> <new-lang-dir> \\
                       <data-dir> <input-decode-dir> <output-decode-dir>
    options: [--cmd (run.pl|queue.pl [queue opts])]
-   See also: steps/lmrescore_const_arpa.sh 
+   See also: steps/lmrescore_const_arpa.sh
 EOF
    exit 1;
 fi
@@ -77,8 +77,8 @@ nj=`cat $indir/num_jobs` || exit 1;
 cp $indir/num_jobs $outdir
 
 lats_rspecifier="ark:gunzip -c $indir/lat.JOB.gz |"
-  
-lats_wspecifier="ark:| gzip -c > $outdir/lat.JOB.gz" 
+
+lats_wspecifier="ark:| gzip -c > $outdir/lat.JOB.gz"
 
 if [ $stage -le 1 ]; then
   $cmd JOB=1:$nj $outdir/log/rescorelm.JOB.log \

@@ -7,14 +7,14 @@
 # This script does an extra pass of lattice generation over and above what the original
 # script did-- it's for robustness in the case where your original cepstral mean
 # normalization was way off.
-# We also added a new option --distribute=true (by default) to 
+# We also added a new option --distribute=true (by default) to
 # weight-silence-post.  This weights the silence frames in a different way,
 # weighting all posteriors on the frame rather than just the silence ones, which
 # removes a particular kind of bias that the old approach suffered from.
 
 # There are 3 models involved potentially in this script,
 # and for a standard, speaker-independent system they will all be the same.
-# The "alignment model" is for the 1st-pass decoding and to get the 
+# The "alignment model" is for the 1st-pass decoding and to get the
 # Gaussian-level alignments for the "adaptation model" the first time we
 # do fMLLR.  The "adaptation model" is used to estimate fMLLR transforms
 # and to generate state-level lattices.  The lattices are then rescored
@@ -23,7 +23,7 @@
 # The following table explains where we get these 3 models from.
 # Note: $srcdir is one level up from the decoding directory.
 #
-#   Model              Default source:                 
+#   Model              Default source:
 #
 #  "alignment model"   $srcdir/final.alimdl              --alignment-model <model>
 #                     (or $srcdir/final.mdl if alimdl absent)
@@ -42,7 +42,7 @@ adapt_model=
 final_model=
 cleanup=true
 stage=0
-acwt=0.083333 # Acoustic weight used in getting fMLLR transforms, and also in 
+acwt=0.083333 # Acoustic weight used in getting fMLLR transforms, and also in
               # lattice generation.
 max_active=7000
 max_mem=50000000
@@ -54,7 +54,7 @@ distribute=true # option to weight-silence-post.
 cmd=run.pl
 si_dir=
 fmllr_update_type=full
-skip_scoring=false
+skip_scoring=true
 num_threads=1 # if >1, will use gmm-latgen-faster-parallel
 parallel_opts=  # ignored now.
 scoring_opts=
@@ -170,7 +170,7 @@ fi
 
 pass1feats="$sifeats transform-feats --utt2spk=ark:$sdata/JOB/utt2spk ark:$dir/trans1.JOB ark:- ark:- |"
 
-## Do the first adapted lattice generation pass. 
+## Do the first adapted lattice generation pass.
 if [ $stage -le 2 ]; then
   echo "$0: doing first adapted lattice generation phase"
   if [ -f "$graphdir/num_pdfs" ]; then

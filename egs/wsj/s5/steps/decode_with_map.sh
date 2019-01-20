@@ -2,10 +2,10 @@
 
 # Copyright 2012  Neha Agrawal, Cisco Systems;
 #                 Johns Hopkins University (Author: Daniel Povey);
-#                 
+#
 # Apache 2.0
 
-# Begin configuration section.  
+# Begin configuration section.
 transform_dir=
 iter=
 model= # You can specify the model to use (e.g. if you want to use the .alimdl)
@@ -20,7 +20,7 @@ weight_tau=10
 flags=mw  # could also contain "v" for variance; the default
           # tau for that is 50.
 stage=1
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 [ -f ./path.sh ] && . ./path.sh; # source the path.
@@ -58,7 +58,7 @@ mkdir -p $dir/log
 echo $nj > $dir/num_jobs
 
 if [ -z "$model" ]; then # if --model <mdl> was not specified on the command line...
-  if [ -z $iter ]; then model=$srcdir/final.mdl; 
+  if [ -z $iter ]; then model=$srcdir/final.mdl;
   else model=$srcdir/$iter.mdl; fi
 fi
 

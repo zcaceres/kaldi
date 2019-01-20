@@ -34,7 +34,7 @@ use_fmllr=false
 fmllr_iters=10
 fmllr_min_count=1000
 scale_opts="--transition-scale=1.0 --self-loop-scale=0.1"
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging

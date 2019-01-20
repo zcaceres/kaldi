@@ -15,7 +15,7 @@ lattice_beam=6.0
 acwt=0.083333 # note: only really affects pruning (scoring is on lattices).
 min_lmwt=9
 max_lmwt=20
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging

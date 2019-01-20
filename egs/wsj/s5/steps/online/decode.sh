@@ -16,7 +16,7 @@ per_utt=false
 do_endpointing=false
 do_speex_compressing=false
 scoring_opts=
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging

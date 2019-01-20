@@ -9,7 +9,7 @@
 
 # Begin configuration section.
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 max_ngram_order=4
 acwt=0.1
 weight=0.5  # Interpolation weight for RNNLM.

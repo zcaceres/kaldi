@@ -19,7 +19,7 @@ online=true  # only relevant to non-threaded decoder.
 do_endpointing=false
 do_speex_compressing=false
 scoring_opts=
-skip_scoring=false
+skip_scoring=true
 silence_weight=1.0  # set this to a value less than 1 (e.g. 0) to enable silence weighting.
 max_state_duration=40 # This only has an effect if you are doing silence
   # weighting.  This default is probably reasonable.  transition-ids repeated

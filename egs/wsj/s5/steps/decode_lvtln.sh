@@ -8,7 +8,7 @@
 
 # Begin configuration section
 stage=0
-acwt=0.083333 
+acwt=0.083333
 max_active=3000 # Have a smaller than normal max-active, to limit decoding time.
 beam=13.0
 lattice_beam=6.0
@@ -16,7 +16,7 @@ nj=4
 silence_weight=0.0
 logdet_scale=0.0
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 num_threads=1 # if >1, will use gmm-latgen-faster-parallel
 parallel_opts=  # ignored now.
 scoring_opts=
@@ -162,14 +162,14 @@ if [ -f $dir/warp.1 ]; then
 fi
 
 if true; then # Diagnostics
-  if [ -f $data/spk2gender ]; then 
+  if [ -f $data/spk2gender ]; then
     # To make it easier to eyeball the male and female speakers' warps
     # separately, separate them out.
     for g in m f; do # means: for gender in male female
       cat $dir/final.warp | \
         utils/filter_scp.pl <(grep -w $g $data/spk2gender | awk '{print $1}') > $dir/final.warp.$g
       echo -n "The last few warp factors for gender $g are: "
-      tail -n 10 $dir/final.warp.$g | awk '{printf("%s ", $2);}'; 
+      tail -n 10 $dir/final.warp.$g | awk '{printf("%s ", $2);}';
       echo
     done
   fi

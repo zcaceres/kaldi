@@ -25,7 +25,7 @@ cmd=run.pl
 iter=final
 prob_scale=-0.25
 dimensions=0:13:104:117
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging
@@ -133,7 +133,7 @@ for model_type in left right; do
      echo "$0: warning: not using transforms in $olddir (this is just a "
      echo " limitation of the script right now, and could be fixed)."
   fi
-  
+
   if [ $stage -le 2 ]; then
     echo "Getting gselect info for $model_type model."
     $cmd JOB=1:$nj $dir/log/gselect.$model_type.JOB.log \

@@ -10,7 +10,7 @@ maxactive=7000
 beam=13.0
 lattice_beam=6.0
 acwt=0.083333
-skip_scoring=false
+skip_scoring=true
 # End configuration.
 
 echo "$0 $@"  # Print the command line for logging

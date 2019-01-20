@@ -6,7 +6,7 @@ set -e -o pipefail
 mode=4  # mode can be 1 through 5.  They should all give roughly similar results.
         # See the comments in the case statement for more details.
 cmd=run.pl
-skip_scoring=false
+skip_scoring=true
 self_loop_scale=0.1  # only matters for mode 4.
 acoustic_scale=0.1   # only matters for mode 5.
 # End configuration section.

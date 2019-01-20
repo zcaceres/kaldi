@@ -31,7 +31,7 @@ vecs_beam=4.0 # Beam we use to prune lattices while getting posteriors for
 use_fmllr=false
 fmllr_iters=10
 fmllr_min_count=1000
-skip_scoring=false
+skip_scoring=true
 # End configuration section.
 
 echo "$0 $@"  # Print the command line for logging

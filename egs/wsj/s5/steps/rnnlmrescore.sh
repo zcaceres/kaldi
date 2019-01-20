@@ -15,7 +15,7 @@ use_phi=false  # This is kind of an obscure option.  If true, we'll remove the o
 test=false # Activate a testing option.
 stage=1 # Stage of this script, for partial reruns.
 rnnlm_ver=rnnlm-0.3e
-skip_scoring=false
+skip_scoring=true
 keep_ali=true
 # End configuration section.
 

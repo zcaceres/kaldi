@@ -16,7 +16,7 @@
 transform_dir=    # dir to find fMLLR transforms.
 cmd=run.pl
 iter=final
-skip_scoring=false
+skip_scoring=true
 scoring_opts=
 # End configuration section.
 
